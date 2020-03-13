@@ -164,9 +164,9 @@
             <div class="col-12 grid-margin">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Horizontal Two column</h4>
-                  <form class="form-sample">
-                    <p class="card-description">
+                  <h4 class="display-3">Add New Client</h4>
+                  <form class="form-sample" autocomplete="off" action="client_creation.php" method="post">
+                    <p class="display-4">
                       Personal info
                     </p>
                     <div class="row">
@@ -174,7 +174,7 @@
                         <div class="form-group row">
                           <label class="col-sm-3 col-form-label">First Name</label>
                           <div class="col-sm-9">
-                            <input type="text" class="form-control" />
+                            <input type="text" name="name_first" id="name_first" class="form-control" pattern="[a-zA-Z]{1,45}" required />
                           </div>
                         </div>
                       </div>
@@ -182,7 +182,7 @@
                         <div class="form-group row">
                           <label class="col-sm-3 col-form-label">Last Name</label>
                           <div class="col-sm-9">
-                            <input type="text" class="form-control" />
+                            <input type="text" name="name_last" id="name_last" class="form-control" pattern="[a-zA-Z]{1,45}" required />
                           </div>
                         </div>
                       </div>
@@ -192,7 +192,7 @@
                         <div class="form-group row">
                           <label class="col-sm-3 col-form-label">Gender</label>
                           <div class="col-sm-9">
-                            <select class="form-control">
+                            <select class="form-control" name="gender" id="gender" required>
                               <option>Male</option>
                               <option>Female</option>
                             </select>
@@ -203,7 +203,7 @@
                         <div class="form-group row">
                           <label class="col-sm-3 col-form-label">Date of Birth</label>
                           <div class="col-sm-9">
-                            <input class="form-control" placeholder="dd/mm/yyyy"/>
+                            <input class="form-control" name="date_of_birth" id="date_of_birth" placeholder="dd/mm/yyyy"/>
                           </div>
                         </div>
                       </div>
@@ -244,7 +244,25 @@
                         </div>
                       </div>
                     </div>
-                    <p class="card-description">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Phone</label>
+                          <div class="col-sm-9">
+                            <input type="tel" name="phone_home" id="phone_home" class="form-control" pattern="[0-9]{7,12}" />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Email</label>
+                          <div class="col-sm-9">
+                            <input type="email" name="email" id="email" class="form-control" pattern="[^@\s]+@[^@\s]+\.[^@\s]+" />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <p class="display-4">
                       Address
                     </p>
                     <div class="row">
@@ -252,7 +270,7 @@
                         <div class="form-group row">
                           <label class="col-sm-3 col-form-label">Address 1</label>
                           <div class="col-sm-9">
-                            <input type="text" class="form-control" />
+                            <input type="text" name="address1" id="address1" class="form-control" />
                           </div>
                         </div>
                       </div>
@@ -260,7 +278,7 @@
                         <div class="form-group row">
                           <label class="col-sm-3 col-form-label">State</label>
                           <div class="col-sm-9">
-                            <input type="text" class="form-control" />
+                            <input type="text" name="state" id="state" class="form-control" />
                           </div>
                         </div>
                       </div>
@@ -270,7 +288,7 @@
                         <div class="form-group row">
                           <label class="col-sm-3 col-form-label">Address 2</label>
                           <div class="col-sm-9">
-                            <input type="text" class="form-control" />
+                            <input type="text" name="address2" id="address2" class="form-control" />
                           </div>
                         </div>
                       </div>
@@ -278,7 +296,7 @@
                         <div class="form-group row">
                           <label class="col-sm-3 col-form-label">Postcode</label>
                           <div class="col-sm-9">
-                            <input type="text" class="form-control" />
+                            <input type="text" name="postal" id="postal" class="form-control" />
                           </div>
                         </div>
                       </div>
@@ -288,7 +306,7 @@
                         <div class="form-group row">
                           <label class="col-sm-3 col-form-label">City</label>
                           <div class="col-sm-9">
-                            <input type="text" class="form-control" />
+                            <input type="text" name="city" id="city" class="form-control" />
                           </div>
                         </div>
                       </div>
@@ -296,15 +314,18 @@
                         <div class="form-group row">
                           <label class="col-sm-3 col-form-label">Country</label>
                           <div class="col-sm-9">
-                            <select class="form-control">
-                              <option>America</option>
-                              <option>Italy</option>
-                              <option>Russia</option>
-                              <option>Britain</option>
+                            <select id="country" name="country" class="form-control">
+                              <option>United States of America</option>
+                              <option>Canada</option>
+                              <option>United Kingdom</option>
+                              <option>Mexico</option>
                             </select>
                           </div>
                         </div>
                       </div>
+                    </div>
+                    <div class="row">
+                    	<button type="submit" class="btn btn-primary" id="Submit" value="new" onclick="showResult()" style="margin-left: 20px">Finish</button>
                     </div>
                   </form>
                 </div>
