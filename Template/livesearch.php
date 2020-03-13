@@ -27,14 +27,25 @@ if (strlen($safe_value)>0) {
     exit();
   }
 
-  $sql = "SELECT * FROM client 
-          WHERE name_last LIKE '".$safe_value."%' 
-          OR name_first LIKE '".$safe_value."%' 
-          OR name_middle LIKE '".$safe_value."%' 
-          OR email LIKE '".$safe_value."%' 
-          OR phone_home LIKE '%".$safe_value."%' 
-          OR phone_cell LIKE '%".$safe_value."%' 
-          OR phone_work LIKE '%".$safe_value."%' ";
+  $split_values = explode(" ",$safe_value);
+
+  $sql="SELECT * FROM client WHERE ";
+  $count = 0;
+  $conds=array();
+
+  foreach($split_values as $text)
+  {
+    $conds[] = "(name_last LIKE '".$text."%' 
+        OR name_first LIKE '".$text."%' 
+        OR name_middle LIKE '".$text."%' 
+        OR email LIKE '".$text."%' 
+        OR phone_home LIKE '%".$text."%' 
+        OR phone_cell LIKE '%".$text."%' 
+        OR phone_work LIKE '%".$text."%')";
+  }
+
+  $sql .= implode(' AND ', $conds);
+  
   $result = mysqli_query($con, $sql);
 
   while($row = mysqli_fetch_assoc($result)) {
@@ -43,6 +54,7 @@ if (strlen($safe_value)>0) {
     }
     $table=$table. "<tr cli_id='".$row['id']."'>
                       <th>".$row['name_first']."</th>
+                      <th>".$row['name_middle' ]."</th>
                       <th>".$row['name_last' ]."</th>
                       <th type='phone'>".$row['phone_home']."</th>
                       <th>".$row['email'     ]."</th>
@@ -61,4 +73,15 @@ if (strlen($safe_value)>0) {
   //echo $response;
   echo $response;
 }
+
+"
+SELECT * FROM client WHERE name_last LIKE '".$text."%' 
+        OR name_first LIKE '".$text."%' 
+        OR name_middle LIKE '".$text."%' 
+        OR email LIKE '".$text."%' 
+        OR phone_home LIKE '%".$text."%' 
+        OR phone_cell LIKE '%".$text."%' 
+        OR phone_work LIKE '%".$text."%') AND EXISTS (SELECT * FROM Student_info WHERE Student_info.Name <> 'Yashpal' AND Student_info.studentid = Student_detail.studentid AND Student_info.name = Student_detail.name);"
+
 ?> 
+
