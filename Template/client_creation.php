@@ -1,17 +1,19 @@
 <?php
 
-$name_first    = $_REQUEST['name_first'   ];
-$name_last     = $_REQUEST['name_last'    ];
-$gender        = $_REQUEST['gender'       ];
-$phone_home    = $_REQUEST['phone_home'   ];
-$email         = $_REQUEST['email'        ];
-$address1      = $_REQUEST['address1'     ];
-$address2      = $_REQUEST['address2'     ];
-$city          = $_REQUEST['city'         ];
-$state         = $_REQUEST['state'        ];
-$postal        = $_REQUEST['postal'       ];
-$country       = $_REQUEST['country'      ];
-$date_of_birth = $_REQUEST['date_of_birth'];
+$name_first    = $_REQUEST['name_first'];
+$name_last     = $_REQUEST['name_last' ];
+$gender        = $_REQUEST['gender'    ];
+$phone_home    = $_REQUEST['phone_home'];
+$email         = $_REQUEST['email'     ];
+$address1      = $_REQUEST['address1'  ];
+$address2      = $_REQUEST['address2'  ];
+$city          = $_REQUEST['city'      ];
+$state         = $_REQUEST['state'     ];
+$postal        = $_REQUEST['postal'    ];
+$country       = $_REQUEST['country'   ];
+$month         = $_REQUEST['month'     ];
+$day           = $_REQUEST['day'       ];
+$year          = $_REQUEST['year'      ];
 
 $host="24.165.99.36";
 $port=3306;
@@ -41,7 +43,7 @@ VALUES (
 '".$address2."',  '".$city."',
 '".$state."',     '".$postal."',
 '".$country."',
-STR_TO_DATE('".$date_of_birth."','%m/%d/%Y'))";
+STR_TO_DATE('".$month."/".$day."/".$year."','%m/%d/%Y'))";
 
 if(mysqli_query($con, $sql)){
   mysqli_close($con);

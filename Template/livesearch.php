@@ -34,10 +34,12 @@ $conds=array();
 
 foreach($split_values as $text)
 {
-  $conds[] = "(name_last LIKE '".$text."%' 
-      OR name_first LIKE '".$text."%' 
+  $conds[] = "(
+         id LIKE '"         .$text."%' 
+      OR name_last LIKE '"  .$text."%' 
+      OR name_first LIKE '" .$text."%' 
       OR name_middle LIKE '".$text."%' 
-      OR email LIKE '".$text."%' 
+      OR email LIKE '"      .$text."%' 
       OR phone_home LIKE '%".$text."%' 
       OR phone_cell LIKE '%".$text."%' 
       OR phone_work LIKE '%".$text."%')";
@@ -51,15 +53,15 @@ while($row = mysqli_fetch_assoc($result)) {
   if ($table==""){
     $table=$table_head;
   }
-  $table=$table. "<tr onclick=\"document.location = 'new_client.html';\" cli_id='".$row['id']."'>
-                    <th>".$row['name_first']."</th>
-                    <th>".$row['name_middle']."</th>
-                    <th>".$row['name_last']."</th>
-                    <th type='tel'>".$row['phone_home']."</th>
-                    <th type='email'>".$row['email']."</th>
-                  </tr>";
+  $table=$table."<tr onclick=location.assign(\"/client_info.html?id=".$row['id']."\");>
+                   <th>"             .$row['name_first' ]."</th>
+                   <th>"             .$row['name_middle']."</th>
+                   <th>"             .$row['name_last'  ]."</th>
+                   <th type='tel'>"  .$row['phone_home' ]."</th>
+                   <th type='email'>".$row['email'      ]."</th>
+                 </tr>";
 }
-//echo "<div id='link' onClick='addText(\"".$row['name_first']."\");'>" . $row['name_last'] . "</div>";
+
 mysqli_close($con);
 // Set output to "no suggestion" if no hint was found
 // or to the correct values

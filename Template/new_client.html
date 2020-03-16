@@ -16,7 +16,7 @@
   <link rel="shortcut icon" href="images/favicon.png" />
 </head>
 
-<body>
+<body onload="populateDropdowns()">
   <div class="container-scroller">
     <!-- partial:partials/_navbar.html -->
     <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
@@ -149,7 +149,7 @@
         <ul class="nav">
 
           <li class="nav-item">
-            <a class="nav-link" href="index.html">
+            <a class="nav-link" href="clients.html">
               <i class="ti-shield menu-icon"></i>
               <span class="menu-title">Clients</span>
             </a>
@@ -202,8 +202,14 @@
                       <div class="col-md-6">
                         <div class="form-group row">
                           <label class="col-sm-3 col-form-label">Date of Birth</label>
-                          <div class="col-sm-9">
-                            <input class="form-control" name="date_of_birth" id="date_of_birth" placeholder="dd/mm/yyyy"/>
+                          <div class="col-sm-3">
+                            <select class="form-control" name=year  id=year onchange="dayDropUpdate()"> </select>
+                          </div>
+                          <div class="col-sm-3">
+                            <select class="form-control" name=month  id=month onchange="dayDropUpdate()"> </select>
+                          </div>
+                          <div class="col-sm-3">
+                            <select class="form-control" name=day  id=day> </select>
                           </div>
                         </div>
                       </div>
@@ -278,7 +284,7 @@
                         <div class="form-group row">
                           <label class="col-sm-3 col-form-label">State</label>
                           <div class="col-sm-9">
-                            <input type="text" name="state" id="state" class="form-control" />
+                            <select class="form-control" name=state id=state> </select>
                           </div>
                         </div>
                       </div>
@@ -325,7 +331,7 @@
                       </div>
                     </div>
                     <div class="row">
-                    	<button type="submit" class="btn btn-primary" id="Submit" value="new" onclick="showResult()" style="margin-left: 20px">Finish</button>
+                      <button type="submit" class="btn btn-primary" id="Submit" value="new" style="margin-left: 20px">Finish</button>
                     </div>
                   </form>
                 </div>
@@ -359,6 +365,98 @@
   <!-- endinject -->
   <!-- Custom js for this page-->
   <script src="../../js/file-upload.js"></script>
+  <script type="text/javascript">
+    function populateDropdowns(){
+      yearDrop();
+      monthDrop();
+      dayDrop();
+      stateDrop();
+    }
+
+    function yearDrop(){
+      var end = 1900;
+      var start = new Date().getFullYear()-10;
+      var options = "";
+      for(var year = start ; year >=end; year--){
+        options += "<option value=\""+year+"\">"+ year +"</option>";
+      }
+      document.getElementById("year").innerHTML = options;
+    }
+
+    function monthDrop(){
+      var start = 1;
+      var end = 12;
+      var options = "";
+      for(var month = start ; month <=end; month++){
+        if (month >= 10){
+          options += "<option value=\""+month+"\">"+ month +"</option>";
+        } else {
+          options += "<option value=\"0"+month+"\">0"+ month +"</option>";
+        }
+      }
+      document.getElementById("month").innerHTML = options;
+    }
+
+    function dayDrop(dayVal){
+      var start = 1;
+      var month = document.getElementById("month");
+      var year = document.getElementById("year");
+      var end = new Date(
+        year.options[year.selectedIndex].value,
+        month.options[month.selectedIndex].value, 0
+        ).getDate();
+
+      var options = "";
+      for(var day = start ; day <=end; day++){
+        if (day >= 10){
+          options += "<option value=\""+day+"\">"+ day +"</option>";
+        } else {
+          options += "<option value=\"0"+day+"\">0"+ day +"</option>";
+        }
+      }
+      document.getElementById("day").innerHTML = options;
+    }
+
+    function dayDropUpdate(){
+      var day = document.getElementById("day");
+      var dayVal = day.options[day.selectedIndex].value;
+      var start = 1;
+      var month = document.getElementById("month");
+      var year = document.getElementById("year");
+      var end = new Date(
+        year.options[year.selectedIndex].value,
+        month.options[month.selectedIndex].value, 0
+        ).getDate();
+
+      var options = "";
+      for(var day = start ; day <=end; day++){
+        if (day >= 10){
+          options += "<option value=\""+day+"\">"+ day +"</option>";
+        } else {
+          options += "<option value=\"0"+day+"\">0"+ day +"</option>";
+        }
+      }
+      document.getElementById("day").innerHTML = options;
+
+      if (dayVal > end){
+        selectElement("day", end)
+      } else {
+        selectElement("day", dayVal)
+      }
+    }
+
+    function stateDrop(){
+      var states = "<select><option value=\"AL\">Alabama</option><option value=\"AK\">Alaska</option><option value=\"AZ\">Arizona</option><option value=\"AR\">Arkansas</option><option value=\"CA\">California</option><option value=\"CO\">Colorado</option><option value=\"CT\">Connecticut</option><option value=\"DE\">Delaware</option><option value=\"DC\">District Of Columbia</option><option value=\"FL\">Florida</option><option value=\"GA\">Georgia</option><option value=\"HI\">Hawaii</option><option value=\"ID\">Idaho</option><option value=\"IL\">Illinois</option><option value=\"IN\">Indiana</option><option value=\"IA\">Iowa</option><option value=\"KS\">Kansas</option><option value=\"KY\">Kentucky</option><option value=\"LA\">Louisiana</option><option value=\"ME\">Maine</option><option value=\"MD\">Maryland</option><option value=\"MA\">Massachusetts</option><option value=\"MI\">Michigan</option><option value=\"MN\">Minnesota</option><option value=\"MS\">Mississippi</option><option value=\"MO\">Missouri</option><option value=\"MT\">Montana</option><option value=\"NE\">Nebraska</option><option value=\"NV\">Nevada</option><option value=\"NH\">New Hampshire</option><option value=\"NJ\">New Jersey</option><option value=\"NM\">New Mexico</option><option value=\"NY\">New York</option><option value=\"NC\">North Carolina</option><option value=\"ND\">North Dakota</option><option value=\"OH\">Ohio</option><option value=\"OK\">Oklahoma</option><option value=\"OR\">Oregon</option><option value=\"PA\">Pennsylvania</option><option value=\"RI\">Rhode Island</option><option value=\"SC\">South Carolina</option><option value=\"SD\">South Dakota</option><option value=\"TN\">Tennessee</option><option value=\"TX\">Texas</option><option value=\"UT\">Utah</option><option value=\"VT\">Vermont</option><option value=\"VA\">Virginia</option><option value=\"WA\">Washington</option><option value=\"WV\">West Virginia</option><option value=\"WI\">Wisconsin</option><option value=\"WY\">Wyoming</option></select>";
+
+      document.getElementById("state").innerHTML = states;
+    }
+
+    function selectElement(id, valueToSelect) {    
+      let element = document.getElementById(id);
+      element.value = valueToSelect;
+    }
+
+  </script>
   <!-- End custom js for this page-->
 </body>
 
