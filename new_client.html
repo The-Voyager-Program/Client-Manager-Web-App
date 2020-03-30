@@ -161,7 +161,7 @@
       <div class="main-panel">        
         <div class="content-wrapper">
           <div class="row">
-            <div class="col-12 grid-margin">
+            <div class="col-12 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
                   <h4 class="display-3">Add New Client</h4>
@@ -170,19 +170,38 @@
                       Personal info
                     </p>
                     <div class="row">
-                      <div class="col-md-6">
+                      <div class="col-md-12">
                         <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">First Name</label>
-                          <div class="col-sm-9">
-                            <input type="text" name="name_first" id="name_first" class="form-control" pattern="[a-zA-Z]{1,45}" required />
+                          <label class="col-sm-1 col-form-label">Name</label>
+                          <div class="col-sm-2">
+                            <select class="form-control" name="name_prefix" id="name_prefix">
+                              <option value="Mr"> Mr </option>
+                              <option value="Mrs"> Mrs </option>
+                              <option value="Ms"> Ms </option>
+                              <option value="Miss"> Miss </option>
+                              <option value="Fr"> Father (Fr) </option>
+                              <option value="Rev"> Reverend (Rev) </option>
+                              <option value="Dr"> Doctor (Dr) </option>
+                              <option value="Hon"> Honorable (Hon) </option>
+                              <option value="Ofc"> Officer (Ofc) </option>
+                            </select> 
+                            <p class="text-secondary">Prefix</p>
                           </div>
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">Last Name</label>
-                          <div class="col-sm-9">
+                          <div class="col-sm-2">
+                            <input type="text" name="name_first" id="name_first" class="form-control" pattern="[a-zA-Z]{1,45}" required />
+                            <p class="text-secondary">First</p>
+                          </div>
+                          <div class="col-sm-2">
+                            <input type="text" name="name_middle" id="name_middle" class="form-control" pattern="[a-zA-Z]{1,45}"/>
+                            <p class="text-secondary">Middle</p>
+                          </div>
+                          <div class="col-sm-3">
                             <input type="text" name="name_last" id="name_last" class="form-control" pattern="[a-zA-Z]{1,45}" required />
+                            <p class="text-secondary">Last</p>
+                          </div>
+                          <div class="col-sm-2">
+                            <input type="text" name="name_suffix" id="name_suffix" class="form-control" pattern="[a-zA-Z]{1,45}"/>
+                            <p class="text-secondary">Suffix</p>
                           </div>
                         </div>
                       </div>
@@ -204,12 +223,15 @@
                           <label class="col-sm-3 col-form-label">Date of Birth</label>
                           <div class="col-sm-3">
                             <select class="form-control" name=year  id=year onchange="dayDropUpdate()"> </select>
+                            <p class="text-secondary">Year</p>
                           </div>
                           <div class="col-sm-3">
                             <select class="form-control" name=month  id=month onchange="dayDropUpdate()"> </select>
+                            <p class="text-secondary">Month</p>
                           </div>
                           <div class="col-sm-3">
                             <select class="form-control" name=day  id=day> </select>
+                            <p class="text-secondary">Day</p>
                           </div>
                         </div>
                       </div>
@@ -217,43 +239,7 @@
                     <div class="row">
                       <div class="col-md-6">
                         <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">Category</label>
-                          <div class="col-sm-9">
-                            <select class="form-control">
-                              <option>Category1</option>
-                              <option>Category2</option>
-                              <option>Category3</option>
-                              <option>Category4</option>
-                            </select>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">Membership</label>
-                          <div class="col-sm-4">
-                            <div class="form-check">
-                              <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="membershipRadios" id="membershipRadios1" value="" checked="">
-                                Free
-                              <i class="input-helper"></i></label>
-                            </div>
-                          </div>
-                          <div class="col-sm-5">
-                            <div class="form-check">
-                              <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="membershipRadios" id="membershipRadios2" value="option2">
-                                Professional
-                              <i class="input-helper"></i></label>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-6">
-                        <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">Phone</label>
+                          <label class="col-sm-3 col-form-label">Home Phone</label>
                           <div class="col-sm-9">
                             <input type="tel" name="phone_home" id="phone_home" class="form-control" pattern="[0-9]{7,12}" />
                           </div>
@@ -261,8 +247,36 @@
                       </div>
                       <div class="col-md-6">
                         <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">Email</label>
+                          <label class="col-sm-3 col-form-label">Work Phone</label>
                           <div class="col-sm-9">
+                            <input type="tel" name="phone_work" id="phone_work" class="form-control" pattern="[0-9]{7,12}" />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Cell Phone</label>
+                          <div class="col-sm-9">
+                            <input type="tel" name="phone_cell" id="phone_cell" class="form-control" pattern="[0-9]{7,12}" />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Fax</label>
+                          <div class="col-sm-9">
+                            <input type="tel" name="fax" id="fax" class="form-control" pattern="[0-9]{7,12}" />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-9">
+                        <div class="form-group row">
+                          <label class="col-sm-2 col-form-label">Email</label>
+                          <div class="col-sm-6">
                             <input type="email" name="email" id="email" class="form-control" pattern="[^@\s]+@[^@\s]+\.[^@\s]+" />
                           </div>
                         </div>
@@ -331,6 +345,37 @@
                       </div>
                     </div>
                     <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Judge</label>
+                          <div class="col-sm-9">
+                            <select class="form-control" name="judge" id="judge" required></select>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Membership</label>
+                          <div class="col-sm-4">
+                            <div class="form-check">
+                              <label class="form-check-label">
+                                <input type="radio" class="form-check-input" name="membershipRadios" id="membershipRadios1" value="" checked="">
+                                Free
+                              <i class="input-helper"></i></label>
+                            </div>
+                          </div>
+                          <div class="col-sm-5">
+                            <div class="form-check">
+                              <label class="form-check-label">
+                                <input type="radio" class="form-check-input" name="membershipRadios" id="membershipRadios2" value="option2">
+                                Professional
+                              <i class="input-helper"></i></label>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
                       <button type="submit" class="btn btn-primary" id="Submit" value="new" style="margin-left: 20px">Finish</button>
                     </div>
                   </form>
@@ -371,7 +416,37 @@
       monthDrop();
       dayDrop();
       stateDrop();
+      judgeDrop();
     }
+
+    function judgeDrop() { 
+      if (window.XMLHttpRequest) {
+        // code for IE7+, Firefox, Chrome, Opera, Safari
+        xmlhttp=new XMLHttpRequest();
+      } else {  // code for IE6, IE5
+        xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+      }
+      xmlhttp.onreadystatechange=function() {
+        if (this.readyState==4 && this.status==200) {
+          document.getElementById("judge").innerHTML=this.responseText;
+          //document.getElementById("livesearch").style.border="1px solid #A5ACB2";
+        }
+      }
+      xmlhttp.open("POST","get_judges.php",true);
+      xmlhttp.send();
+    }; 
+
+    /*
+    function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, '\\$&');
+    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, ' '));
+    }
+    */
 
     function yearDrop(){
       var end = 1900;

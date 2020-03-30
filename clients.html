@@ -186,27 +186,34 @@
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title">Clients</h4>
-                  <p class="card-description">
 
                   <!-- Client search -->
                   <form class="nav-item nav-search d-none d-lg-block" autocomplete="off">
-                    <div class="input-group">
-                      <div class="input-group-prepend hover-cursor" id="navbar-search-icon">
-                        <span class="input-group-text" id="search">
-                          <i class="ti-search"></i>
-                        </span>
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="form-group row">
+                          <div class="input-group">
+                            <div class="col-sm-1">
+                            </div>
+                            <div class="input-group-prepend hover-cursor" id="navbar-search-icon">
+                              <span class="input-group-text" id="search">
+                                <i class="ti-search"></i>
+                              </span>
+                            </div>
+                            <!-- Search bar -->
+                            <input type="text" value="" class="form-control" id="client-search" onkeyup="showResult(this.value)" placeholder="Search clients" >
+                            <!-- New client button -->
+                            <button type="button" class="btn btn-success" id="new" value="new" onclick="window.location.href = 'new_client.html';" style="margin-left: 20px">+ New</button>
+                            <div class="col-sm-1">
+                            </div>
+                          </div>
+                        </form>
+                        <div class="table-responsive">
+                          <table class="table table-hover" id="livesearch">
+                          </table>
+                        </div>
                       </div>
-                      <!-- Search bar -->
-                      <input type="text" value="" class="form-control" id="client-search" onkeyup="showResult(this.value)" onload="showResult(this.value)" placeholder="Search clients" aria-label="search" aria-describedby="search" >
-                      <!-- New client button -->
-                      <button type="button" class="btn btn-success" id="new" value="new" onclick="window.location.href = 'new_client.html';" style="margin-left: 20px">+ New</button>
                     </div>
-                  </form>
-
-                  </p>
-                  <div class="table-responsive">
-                    <table class="table table-hover" id="livesearch">
-                    </table>
                   </div>
                 </div>
               </div>

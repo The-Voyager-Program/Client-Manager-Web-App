@@ -73,21 +73,49 @@ if($row = mysqli_fetch_assoc($result)){
           <tr>
             <th></th>
             <th></th>
-          </tr>
-          <tr>
+          </tr>";
+
+  $sqlj="SELECT * FROM judge WHERE id=".$row['judge_id']."";
+  $resultj = mysqli_query($con, $sqlj);
+  if($rowj = mysqli_fetch_assoc($resultj)){
+    $out.="<tr>
             <th class=\"text-secondary\">Judge:</th>
-            <th>Judge NAME</th>
-          </tr>
-          <tr>
-            <th class=\"text-secondary\">Officer:</th>
-            <th>Officer NAME</th>
-          </tr>
-        </table>
+            <th>
+              <a href=\"judge_info?id=".$rowj['id']."\">
+                ".$rowj['name_prefix']." ".$rowj['name_first']." ".$rowj['name_middle']." ".$rowj['name_last']." ".$rowj['name_suffix']."
+              </a>
+            </th>
+          </tr>";
+  }else{
+    $out.="<tr>
+            <th class=\"text-secondary\">Judge:</th>
+            <th>NONE</th>
+          </tr>";
+  }
+  $sqlp="SELECT * FROM parole_officer WHERE id=".$row['po_id']."";
+  $resultp = mysqli_query($con, $sqlp);
+  if($rowp = mysqli_fetch_assoc($resultp)){
+    $out.="<tr>
+            <th class=\"text-secondary\">Parole Officer:</th>
+            <th>
+              <a href=\"po_info?id=".$rowp['id']."\">
+                ".$rowp['name_prefix']." ".$rowp['name_first']." ".$rowp['name_middle']." ".$rowp['name_last']." ".$rowp['name_suffix']."
+              </a>
+            </th>
+          </tr>";
+  }else{
+    $out.="<tr>
+            <th class=\"text-secondary\">Parole Officer:</th>
+            <th>NONE</th>
+          </tr>";
+  }
+  $out.="</table>
       </th>
     </tr>
   </table>
   ";
 }
+
 
 mysqli_close($con);
 // Set output to "no suggestion" if no hint was found

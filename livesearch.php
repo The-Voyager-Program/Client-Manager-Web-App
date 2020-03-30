@@ -12,19 +12,7 @@ $table_head="<thead>
 
 $safe_value = $_GET['search'];
 
-$table="";
-$host="24.165.99.36";
-$port=3306;
-$socket="";
-$user="staff";
-$password="without17";
-$dbname="voyager";
-
-$con = mysqli_connect($host, $user, $password, $dbname, $port, $socket);
-if (mysqli_connect_errno()) {
-  echo "Failed to connect to database server: " . mysqli_connect_error();
-  exit();
-}
+include 'db_connect.php';
 
 $split_values = explode(" ",$safe_value);
 
@@ -48,7 +36,7 @@ foreach($split_values as $text)
 $sql .= implode(' AND ', $conds);
 
 $result = mysqli_query($con, $sql);
-
+$table="";
 while($row = mysqli_fetch_assoc($result)) {
   if ($table==""){
     $table=$table_head;
