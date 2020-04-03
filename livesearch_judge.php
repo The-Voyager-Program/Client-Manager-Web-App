@@ -11,7 +11,7 @@ $table_head="<thead>
 
 $safe_value = $_GET['search'];
 
-include 'server_connect.php';
+include 'db_connect.php';
 
 $split_values = explode(" ",$safe_value);
 
