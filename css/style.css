@@ -18351,6 +18351,11 @@ input:focus {
   font-style: normal;
 }
 
+.scroll {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
 .bg-twitter {
   background: #2caae1;
 }

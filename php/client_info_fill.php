@@ -32,12 +32,12 @@ $result = mysqli_query($con, $sql);
 $out = "";
 if($row = mysqli_fetch_assoc($result)){
   $out="
-  <table>
-    <tr>
-      <th style=\"padding: 20px;\">
-        <img src=\"pics/ppic.jpg\">
-      </th>
-      <th style=\"padding: 20px;\">
+    <h4 class=\"card-title\">Client Information</h4>
+    <div class=\"row\">
+      <div class=\"col-md-2\">
+        <img src=\"pics/ppic.jpg\" style=\"max-width: 100%\">
+      </div>
+      <div class=\"col-md-10\">
         <!-- information for client -->
         <table>
           <tr>
@@ -81,7 +81,7 @@ if($row = mysqli_fetch_assoc($result)){
     $out.="<tr>
             <th class=\"text-secondary\">Judge:</th>
             <th>
-              <a href=\"judge_info?id=".$rowj['id']."\">
+              <a href=\"judge_info.html?id=".$rowj['id']."\">
                 ".$rowj['name_prefix']." ".$rowj['name_first']." ".$rowj['name_middle']." ".$rowj['name_last']." ".$rowj['name_suffix']."
               </a>
             </th>
@@ -98,7 +98,7 @@ if($row = mysqli_fetch_assoc($result)){
     $out.="<tr>
             <th class=\"text-secondary\">Parole Officer:</th>
             <th>
-              <a href=\"po_info?id=".$rowp['id']."\">
+              <a href=\"po_info.html?id=".$rowp['id']."\">
                 ".$rowp['name_prefix']." ".$rowp['name_first']." ".$rowp['name_middle']." ".$rowp['name_last']." ".$rowp['name_suffix']."
               </a>
             </th>
@@ -110,9 +110,9 @@ if($row = mysqli_fetch_assoc($result)){
           </tr>";
   }
   $out.="</table>
-      </th>
-    </tr>
-  </table>
+      </div>
+    </div>
+  </div>
   ";
 }
 

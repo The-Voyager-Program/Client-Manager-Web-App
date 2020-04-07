@@ -29,7 +29,7 @@
         //document.getElementById("livesearch").style.border="1px solid #A5ACB2";
       }
     }
-    xmlhttp.open("GET","livesearch_judge.php?search="+str,true);
+    xmlhttp.open("GET","php/livesearch_judge.php?search="+str,true);
     xmlhttp.send();
   }
 
@@ -185,7 +185,7 @@
             <div class="col-lg-12 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Clients</h4>
+                  <h4 class="card-title">Judges</h4>
                   <p class="card-description">
 
                   <!-- Client search -->
@@ -197,7 +197,7 @@
                         </span>
                       </div>
                       <!-- Search bar -->
-                      <input type="text" value="" class="form-control" id="client-search" onkeyup="showResult(this.value)" onload="showResult(this.value)" placeholder="Search clients" aria-label="search" aria-describedby="search" >
+                      <input type="text" value="" class="form-control" id="client-search" onkeyup="showResult(this.value)" onload="showResult(this.value)" placeholder="Search judges" aria-label="search" aria-describedby="search" >
                       <!-- New client button -->
                       <button type="button" class="btn btn-success" id="new" value="new" onclick="window.location.href = 'new_client.html';" style="margin-left: 20px">+ New</button>
                     </div>

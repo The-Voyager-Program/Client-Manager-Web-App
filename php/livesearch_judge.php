@@ -22,13 +22,13 @@ $conds=array();
 foreach($split_values as $text)
 {
   $conds[] = "(
-         id LIKE '"         .$text."%' 
-      OR name_last LIKE '"  .$text."%' 
-      OR name_first LIKE '" .$text."%' 
-      OR name_middle LIKE '".$text."%' 
-      OR email LIKE '"      .$text."%' 
-      OR phone1 LIKE '%"    .$text."%' 
-      OR phone2 LIKE '%"    .$text."%')";
+       id LIKE '"         .$text."%' 
+    OR name_last LIKE '"  .$text."%' 
+    OR name_first LIKE '" .$text."%' 
+    OR name_middle LIKE '".$text."%' 
+    OR email LIKE '"      .$text."%' 
+    OR phone1 LIKE '%"    .$text."%' 
+    OR phone2 LIKE '%"    .$text."%')";
 }
 
 $sql .= implode(' AND ', $conds);
